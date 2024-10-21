@@ -15,6 +15,12 @@ import Image from "next/image"
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import { E164Number } from "libphonenumber-js/core"
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import { Select, SelectContent, SelectTrigger } from "./ui/select"
+import { SelectValue } from "@radix-ui/react-select"
+import { Textarea } from "./ui/textarea"
 
 
 interface CustomProps {
@@ -33,7 +39,7 @@ interface CustomProps {
 }
 
 const RenderField = ({field, props}: {field: FieldValues, props: CustomProps}) => {
-    const {fieldType, iconSrc, iconAlt, placeholder} = props;
+    const {fieldType, iconSrc, iconAlt, placeholder, showTimeSelector, dateFormat, renderSkeleton} = props;
     switch (fieldType) {
         case FormFieldTypes.INPUT:
             return (
@@ -56,6 +62,17 @@ const RenderField = ({field, props}: {field: FieldValues, props: CustomProps}) =
                     </FormControl>
                 </div>
             )
+        case FormFieldTypes.TEXTAREA: 
+            return (
+                <FormControl>
+                    <Textarea
+                        placeholder={placeholder}
+                        {...field}
+                        className="shad-textArea"
+                        disabled={props.disabled}
+                    />
+                </FormControl>
+            )
         case FormFieldTypes.PHONE_INPUT:
             return (
                 <FormControl>
@@ -70,6 +87,50 @@ const RenderField = ({field, props}: {field: FieldValues, props: CustomProps}) =
                     />
                 </FormControl>
             )
+        case FormFieldTypes.DATE_PICKER:
+            return (
+                <div className="flex rounded-md border border-dark-500 bg-dark-400">
+                    <Image
+                        src="/assets/icons/calendar.svg"
+                        height={24}
+                        width={24}
+                        alt="calendar"
+                        className='ml-2'
+                    />
+                    <FormControl>
+                        <DatePicker
+                            selected={field.value} 
+                            onChange={(date) => field.onChange(date)}
+                            dateFormat={dateFormat ?? 'dd/MM/yyyy'}
+                            showTimeSelect={showTimeSelector ?? false}
+                            timeInputLabel="Time:"
+                            wrapperClassName="date-picker"
+                        />
+                    </FormControl>
+                </div>
+            )
+        case FormFieldTypes.SELECT: 
+            return (
+                <FormControl>
+                    <Select 
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}>
+                            <FormControl>
+                                <SelectTrigger className="shad-select-trigger">
+                                    <SelectValue
+                                        placeholder={placeholder}
+                                    />
+                                </SelectTrigger>
+                            </FormControl>  
+                            <SelectContent className="shad-select-content">
+                                {props.children}
+                            </SelectContent>
+                    </Select>
+                </FormControl>
+            )
+        case FormFieldTypes.SKELETON:
+            return renderSkeleton ? renderSkeleton
+            (field) : null
         default:
             break;
     }
