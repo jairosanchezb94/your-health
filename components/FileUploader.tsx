@@ -2,7 +2,6 @@
 
 import { convertFileToUrl } from '@/lib/utils';
 import Image from 'next/image';
-// youtube mint 2h y 6m
 
 import React, {useCallback} from 'react'
 import {useDropzone} from 'react-dropzone'
@@ -19,7 +18,7 @@ const FileUploader = ({files, onChange}: FileUploaderProps) => {
   const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
   return (
-    <div {...getRootProps()} className="file-upload">
+    <div {...getRootProps()} className={`file-upload ${isDragActive ? 'active' : ''}`}>
       <input {...getInputProps()} />
       {files && files?.length > 0 ? (
         <Image

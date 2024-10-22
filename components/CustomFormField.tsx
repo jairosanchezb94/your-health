@@ -2,7 +2,6 @@
 
 import {
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
@@ -163,13 +162,13 @@ const CustomFormField = (props: CustomProps) => {
             render={({ field }) => (
             <FormItem className="flex-1">
                 {fieldType !== FormFieldTypes.CHECKBOX && label && (
-                    <FormLabel>{label}</FormLabel>
+                    <FormLabel className="shad-input-label">{label}</FormLabel>
                 )}
                 <RenderField
                     field={field}
                     props={props}
                 />
-                <FormMessage className="text-error" />
+                 <FormMessage className="shad-error" />
             </FormItem>
             )}
         />
