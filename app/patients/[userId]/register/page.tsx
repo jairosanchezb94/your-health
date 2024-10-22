@@ -1,7 +1,6 @@
 import RegisterFrom from '@/components/forms/RegisterFrom'
 import { getUser } from '@/lib/actions/patient.actions'
 import Image from 'next/image'
-import Link from 'next/link'
 import React from 'react'
 
 const Register = async ({ params: {userId}}: SearchParamProps) => {
@@ -10,29 +9,23 @@ const Register = async ({ params: {userId}}: SearchParamProps) => {
 
   return (
     <div className="flex h-screen max-h-screen">
-    <section className="remove-scrollbar container my-auto">
-      <div className="sub-container max-w-[496px]">
-        <Image 
-          src="/assets/icons/logo-full.svg"
-          alt="patient"
-          width={1000}
-          height={1000}
-          // icon size
-          // className="mb-19 h-10 w-fit"
-        />
+    <section className="remove-scrollbar container">
+      <div className="sub-container max-w-[860px] flex-1 flex-col py-10">
+        <div className="flex justify-center">
+          <Image 
+            src="/assets/icons/logo-full.svg"
+            alt="patient"
+            width={200}
+            height={200}
+          />
+        </div>
 
         <RegisterFrom
           user={user}
         />
-
-        <div className="text-14-reglar mt-12 flex justify-between">
-          <p className="justify-items-end text-dark-600 xl:text-left">
-            ©2024 Your Health App. All rights reserved.
-          </p>
-          <Link href="/?admin=true" className="text-green-500">
-            Admin
-          </Link>
-        </div>
+        <p className="copyright py-10">
+          ©2024 Your Health App. All rights reserved.
+        </p>
       </div>
     </section>
   </div>
