@@ -1,7 +1,9 @@
-import RegisterFrom from '@/components/forms/RegisterFrom'
-import { getUser } from '@/lib/actions/patient.actions'
 import Image from 'next/image'
 import React from 'react'
+
+import RegisterFrom from '@/components/forms/RegisterFrom'
+import { getUser } from '@/lib/actions/patient.actions'
+
 
 const Register = async ({ params: {userId}}: SearchParamProps) => {
 
