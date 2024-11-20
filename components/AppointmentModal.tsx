@@ -47,7 +47,6 @@ export const AppointmentModal = ({
             Please fill in the following details to {type} appointment
           </DialogDescription>
         </DialogHeader>
-
         <AppointmentForm
           userId={userId}
           patientId={patientId}

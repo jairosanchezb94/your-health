@@ -126,7 +126,6 @@ const AppointmentForm = ({
         <h1 className="header">New Appointment</h1>
         <p className="text-dark-700">Request a new appointment</p>
       </section>}
-
       {type !== "cancel" && (
         <>
           <CustomFormField

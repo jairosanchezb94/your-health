@@ -21,7 +21,6 @@ const Register = async ({ params: {userId}}: SearchParamProps) => {
             height={200}
           />
         </div>
-
         <RegisterFrom
           user={user}
         />

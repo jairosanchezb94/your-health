@@ -99,7 +99,6 @@ export const PasskeyModal = () => {
               <InputOTPSlot className="shad-otp-slot" index={5} />
             </InputOTPGroup>
           </InputOTP>
-
           {error && (
             <p className="shad-error text-14-regular mt-4 flex justify-center">
               {error}

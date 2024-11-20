@@ -23,10 +23,8 @@ const Admin = async () => {
             className="h-8 w-fit"
           />
         </Link>
-
         <p className="text-16-semibold">Admin Dashboard</p>
       </header>
-
       <main className="admin-main">
         <section className="w-full space-y-4">
           <h1 className="header">Welcome 👋</h1>
@@ -34,7 +32,6 @@ const Admin = async () => {
             Start the day with managing new appointments
           </p>
         </section>
-
         <section className="admin-stat">
           <StatCard
             type="appointments"
@@ -55,7 +52,6 @@ const Admin = async () => {
             icon={"/assets/icons/cancelled.svg"}
           />
         </section>
-
         <DataTable columns={columns} data={appointments.documents} />
       </main>
     </div>

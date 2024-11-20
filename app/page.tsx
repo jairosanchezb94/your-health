@@ -18,11 +18,8 @@ export default function Home({searchParams}: SearchParamProps ) {
             alt="patient"
             width={1000}
             height={1000}
-            // className="mb-19 h-10 w-fit"
           />
-
           <PatientForm />
-
           <div className="text-14-reglar mt-12 flex justify-between">
             <p className="justify-items-end text-dark-600 xl:text-left">
               ©2024 Your Health App. All rights reserved.
